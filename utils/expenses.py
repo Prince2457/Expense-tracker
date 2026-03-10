@@ -106,6 +106,11 @@ def delete_expense(expense_id):
                         (expense_id,))
         
         connection.commit()
+
+        if cursor.rowcount == 0:
+            print(f"❌ Expense {expense_id} not found.")
+            return False
+
         print(f"Expense {expense_id} deleted successfully")
         return True
     
